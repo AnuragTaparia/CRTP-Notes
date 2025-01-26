@@ -1,0 +1,4 @@
+- Directory Service used to managed Windows networks.
+- Stores information about objects on the network and makes it easily available to users and admins.
+- "Active Directory enables centralized, secure management of an entire network, which might span a building, a city or multiple locations throughout the world."
+- 
