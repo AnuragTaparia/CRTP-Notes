@@ -1,4 +1,5 @@
 - PowerShell is NOT powershell.exe. It is the System.Management.Automation.dll
+- `ls env:`
 ### PowerShell Scripts and Modules
 - Load a PowerShell script using dot sourcing
 ```

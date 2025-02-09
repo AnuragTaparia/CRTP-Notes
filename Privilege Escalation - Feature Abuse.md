@@ -1,0 +1,2 @@
+- Features abuse are awesome as there are seldom patches for them and they are not the focus of security teams!
+- On Windows, many enterprise applications need either Administrative privileges or SYSTEM privileges making them a great avenue for privilege escalation.

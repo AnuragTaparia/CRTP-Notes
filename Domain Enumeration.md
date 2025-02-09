@@ -356,6 +356,7 @@ Get-ForestDomain | %{Get-DomainTrust -Domain $_.Name} | ?{$_.TrustAttributes -eq
 #Power view
 Find-LocalAdminAccess -Verbose
 ```
+- See Find-WMILocalAdminAccess.ps1 and Find-PSRemotingLocalAdminAccess.ps1 (provide list of machine for less noise)
 - Find computers where a domain admin (or specified user/group) has sessions
 ```
 #Power view
@@ -384,3 +385,4 @@ Invoke-SessionHunter -FailSafe
 ```
 Invoke-SessionHunter -NoPortScan -Targets C:\AD\Tools\servers.txt
 ```
+
