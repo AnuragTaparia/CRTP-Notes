@@ -3,7 +3,7 @@
 ### PowerShell Scripts and Modules
 - Load a PowerShell script using dot sourcing
 ```
-C:\AD\Tools\PowerView.ps1
+. C:\AD\Tools\PowerView.ps1
 ```
 - A module (or a script) can be imported with:
 ```
@@ -43,6 +43,11 @@ IEX ([System.IO.StreamReader]($r.GetResponseStream())).ReadToEnd()
 - AntiMalware Scan Interface (AMSI) 
 	- Regardless of how we run a script (from memory or disk or any menas), right before execution it will pick up the content and show it to the AV
 - Constrained Language Mode (CLM) - Integrated with Applocker and WDAC (Device Guard)
+```
+# to check th constrain
+
+$ExecutionContext.SessionState.LanguageMode
+```
 
 ### Execution Policy
 - It is NOT a security measure, it is present to prevent user from accidently executing scripts.
@@ -81,3 +86,12 @@ DefenderCheck.exe PowerUp.ps1
 	- Modify the detected code snippet
 	- Rescan using AMSITrigger
 	- Repeat the steps 2 & 3 till we get a result as “AMSI_RESULT_NOT_DETECTED” or “Blank”
+- Bypass real time monitoring ( admin privs )
+```
+Set-MpPreference -DisableRealtimeMonitoring $true
+Set-MpPreference -DisableIOAVProtection $true
+```
+- Add Exclusion Path
+```
+*Evil-WinRM* PS C:\Users\Public\temp> add-mppreference -ExclusionPath C:\Users\Public\temp
+```

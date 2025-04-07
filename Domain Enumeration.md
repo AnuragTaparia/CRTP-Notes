@@ -108,6 +108,7 @@ Get-ADUser -Filter 'Description -like "*built*"' -Properties Description | selec
 ```
 #Power View
 Get-DomainComputer | select Name
+Get-DomainComputer | select -ExpandProperty dnshostname
 Get-DomainComputer -OperatingSystem "*Server 2022*"
 Get-DomainComputer -Ping
 
@@ -145,6 +146,7 @@ Get-ADGroup -Filter 'Name -like "*admin*"' | select Name
 ```
 #Power View
 Get-DomainGroupMember -Identity "Domain Admins" -Recurse
+Get-DomainGroupMember -Identity "Enterprise Admins" -Domain moneycorp.local
 
 # ActiveDirectory module
 Get-ADGroupMember -Identity "Domain Admins" -Recursive
@@ -161,7 +163,7 @@ Get-ADPrincipalGroupMembership -Identity student1
 - List all the local groups on a machine (needs administrator privs on non-dc machines) :
 ```
 #Power view
-Get-NetLocalGroup -ComputerName dcorp-dc
+	Get-NetLocalGroup -ComputerName dcorp-dc
 ```
 - Get members of the local group "Administrators" on a machine (needs administrator privs on non-dc machines) 
 ```
@@ -221,7 +223,7 @@ Get-DomainOU
 # ActiveDirectory module
 Get-ADOrganizationalUnit -Filter * -Properties *
 ```
-- Get GPO applied on an OU. Read GPOname from gplink attribute from Get-NetOU
+- Get GPO applied on an OU. Read GPO name from gplink attribute from Get-NetOU
 ```
 Get-DomainGPO -Identity "{0D1CC23D-1F20-4EEE-AF64-D99597AE2A6E}"
 ```
@@ -384,5 +386,6 @@ Invoke-SessionHunter -FailSafe
 - An opsec friendly command would be (avoid connecting to all the target machines by specifying targets)
 ```
 Invoke-SessionHunter -NoPortScan -Targets C:\AD\Tools\servers.txt
+Invoke-SessionHunter -NoPortScan -RawResults | select Hostname,UserSession,Access
 ```
 
